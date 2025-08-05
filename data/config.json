@@ -1,0 +1,36 @@
+{
+  "system": {
+    "name": "工业4.0智能管理平台",
+    "version": "1.0.0",
+    "dataSource": "json_file"
+  },
+  "display": {
+    "productsPerPage": 10,
+    "carouselAutoplay": true,
+    "carouselInterval": 4000,
+    "showOnlyOnlineProducts": true
+  },
+  "categories": {
+    "enabled": true,
+    "defaultCategory": "全部商品",
+    "allowEmpty": false
+  },
+  "features": {
+    "enableSearch": true,
+    "enablePagination": true,
+    "enableImageUpload": true,
+    "enableExport": true,
+    "enableStatistics": true
+  },
+  "ui": {
+    "theme": "modern",
+    "primaryColor": "#667eea",
+    "secondaryColor": "#764ba2"
+  },
+  "data": {
+    "autoSave": true,
+    "backupInterval": 3600000,
+    "maxFileSize": "5MB",
+    "allowedImageTypes": ["jpg", "jpeg", "png", "gif", "webp"]
+  }
+}

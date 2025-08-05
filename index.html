@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工业4.0产品管理</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>工业4.0智能管理平台</h1>
+            <p>产品管理系统</p>
+            <div class="header-nav">
+                <a href="index.html" class="nav-link active">商品管理</a>
+                <a href="products.html" class="nav-link">商品展示</a>
+            </div>
+        </div>
+        <div class="content">
+            <div class="controls">
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="搜索产品..." oninput="renderTable()">
+                </div>
+                <button class="btn-primary" onclick="openAddModal()">➕ 新增产品</button>
+            </div>
+            <div class="table-container">
+                <table id="productTable">
+                    <thead>
+                        <tr>
+                            <th class="col-id">产品编号</th>
+                            <th class="col-name">产品名称</th>
+                            <th class="col-price">单价</th>
+                            <th class="col-plan">工作计划编号</th>
+                            <th class="col-status">状态</th>
+                            <th class="col-description">产品描述</th>
+                            <th class="col-image">图片</th>
+                            <th class="col-actions">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <div id="pagination"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 描述详情模态框 -->
+    <div id="descriptionModal" class="description-modal">
+        <div class="description-modal-content">
+            <span class="close-btn" onclick="closeDescriptionModal()">&times;</span>
+            <h3 id="descriptionModalTitle">产品描述</h3>
+            <div class="description-content" id="descriptionModalContent"></div>
+            <div style="margin-top: 20px; text-align: right;">
+                <button class="btn-primary" onclick="closeDescriptionModal()">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 class="modal-title" id="modalTitle">新增产品</h2>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="productId">产品编号 *</label>
+                    <input type="text" id="productId" required>
+                </div>
+                <div class="form-group">
+                    <label for="productName">产品名称 *</label>
+                    <input type="text" id="productName" required>
+                </div>
+                <div class="form-group">
+                    <label for="price">单价 *</label>
+                    <input type="number" id="price" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="workPlan">工作计划 *</label>
+                    <textarea id="workPlan" required placeholder="请输入详细的工作计划..." rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="imageFile">上传图片</label>
+                    <input type="file" id="imageFile" accept="image/*">
+                </div>
+                
+                <!-- 描述和图片区域 -->
+                <div class="description-image-container">
+                    <div class="description-section">
+                        <div class="form-group">
+                            <label for="productDescription">产品描述</label>
+                            <textarea id="productDescription" placeholder="请输入产品的详细描述信息..." rows="6"></textarea>
+                        </div>
+                    </div>
+                    <div class="image-section">
+                        <div class="preview" id="preview"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal()">取消</button>
+                <button class="btn-save" onclick="saveProduct()">保存</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="imagePreviewModal" class="description-modal">
+        <div class="description-modal-content" style="max-width: 90vw; max-height: 90vh; display: flex; flex-direction: column; align-items: center;">
+            <span class="close-btn" onclick="closeImagePreviewModal()">&times;</span>
+            <img id="previewLargeImg" src="" alt="大图预览" style="max-width:80vw; max-height:70vh; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.15); margin-bottom: 10px;">
+        </div>
+    </div>
+
+    <script src="shared.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

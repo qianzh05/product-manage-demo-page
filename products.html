@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品展示页面</title>
+    <link rel="stylesheet" href="products.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 导航栏 -->
+        <nav class="navigation">
+            <div class="nav-content">
+                <h2>工业4.0商城</h2>
+                <div class="nav-links">
+                    <a href="products.html" class="nav-link active">商品展示</a>
+                    <a href="index.html" class="nav-link">商品管理</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- 轮播图区域 -->
+        <div class="carousel-container">
+            <div class="carousel-slide active slide1">
+                <div class="slide-content">
+                    <h2>精选好物</h2>
+                    <p>品质生活，从这里开始</p>
+                </div>
+                <div class="slide-image">🛍️</div>
+            </div>
+            <div class="carousel-slide slide2">
+                <div class="slide-content">
+                    <h2>国赛优品</h2>
+                    <p>匠心工艺，品质保证</p>
+                </div>
+                <div class="slide-image">🏆</div>
+            </div>
+            <div class="carousel-slide slide3">
+                <div class="slide-content">
+                    <h2>个性定制</h2>
+                    <p>专属于你的独特体验</p>
+                </div>
+                <div class="slide-image">✨</div>
+            </div>
+            <div class="carousel-dots">
+                <div class="dot active" onclick="currentSlide(1)"></div>
+                <div class="dot" onclick="currentSlide(2)"></div>
+                <div class="dot" onclick="currentSlide(3)"></div>
+            </div>
+        </div>
+
+        <!-- 商品展示区域 -->
+        <div class="products-section">
+            <h2 class="section-title">精选商品</h2>
+            <div class="products-grid" id="productsGrid">
+                <!-- 商品将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 弹窗 -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-product-image" id="modalProductImage">📱</div>
+                <div class="modal-product-info">
+                    <h3 id="modalProductName">商品名称</h3>
+                    <div class="modal-product-desc" id="modalProductDesc">商品描述</div>
+                    
+                    <div class="modal-work-plan">
+                        <div class="work-plan-title">商品的工作计划</div>
+                        <div class="work-plan-details" id="modalWorkPlan">工作计划详情</div>
+                    </div>
+                    
+                    <div class="customize-link">
+                        <a href="#">没有我想要的？立即定制！</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-section">
+                <div class="quantity-section">
+                    <span class="quantity-label">数量：</span>
+                    <div class="quantity-controls">
+                        <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+                        <input type="number" class="quantity-input" id="quantity" value="1" min="1" max="99">
+                        <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+                    </div>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="modal-btn add-cart-btn" onclick="addToCart()">加入购物车</button>
+                    <button class="modal-btn buy-now-btn" onclick="buyNow()">立即购买</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="shared.js"></script>
+    <script src="products.js"></script>
+</body>
+</html>
