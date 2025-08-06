@@ -5,7 +5,7 @@
       "productName": "智能保温杯",
       "price": 199.00,
       "workPlan": "第一装配 - 对箍 - 蛋芯\n加热时间：5S\n加热次数：3次\n装配时间：25S\n装配/冷却：1次",
-      "status": true,
+      "status": false,
       "image": "https://picsum.photos/200/200?random=1",
       "description": "304不锈钢内胆，智能温控显示，24小时保温。采用先进的温控技术，能够精确显示饮品温度，保温效果持久。",
       "sales": 1234,

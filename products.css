@@ -431,6 +431,7 @@ body {
     text-align: center;
     font-size: 1.1rem;
     background: white;
+    padding-left: 10px;
 }
 
 .modal-actions {
