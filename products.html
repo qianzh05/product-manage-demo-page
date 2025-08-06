@@ -73,7 +73,7 @@
                     </div>
                     
                     <div class="customize-link">
-                        <a href="#">没有我想要的？立即定制！</a>
+                        <a href="#" onclick="openCustomizeModal(); return false;">没有我想要的？立即定制！</a>
                     </div>
                 </div>
             </div>
@@ -92,6 +92,223 @@
                     <button class="modal-btn add-cart-btn" onclick="addToCart()">加入购物车</button>
                     <button class="modal-btn buy-now-btn" onclick="buyNow()">立即购买</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 定制弹窗 -->
+    <div id="customizeModal" class="customize-modal">
+        <div class="customize-modal-content">
+            <div class="customize-modal-header">
+                <h2>产品定制</h2>
+                <button class="close-btn" onclick="closeCustomizeModal()">&times;</button>
+            </div>
+
+            <div class="customize-modal-body">
+                <!-- 错误提示 -->
+                <div id="customizeErrorSection" class="error-section" style="display: none;">
+                    <div class="error-title">⚠️ <span id="customizeErrorTitle"></span></div>
+                    <div class="error-message" id="customizeErrorMessage"></div>
+                </div>
+
+                <!-- 零件选择模块 -->
+                <div class="section">
+                    <div class="parts-selection">
+                        <h3>选择零件</h3>
+                        <div class="parts-row">
+                            <div class="part-group">
+                                <label class="part-label">零件1</label>
+                                <select id="customizeLeftPart" class="part-select" onchange="updateCustomizePartSelection('left', this.value)">
+                                    <option value="">请选择零件</option>
+                                    <option value="part1">白色杯盖</option>
+                                    <option value="part2">黑色杯盖</option>
+                                </select>
+                            </div>
+                            <div class="part-group">
+                                <label class="part-label">零件2</label>
+                                <select id="customizeRightPart" class="part-select" onchange="updateCustomizePartSelection('right', this.value)">
+                                    <option value="">请选择零件</option>
+                                    <option value="part1">红色杯体</option>
+                                    <option value="part2">黑色杯体</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 工序配置 -->
+                <div class="section">
+                    <h3>工序配置</h3>
+                    
+                    <!-- 钻孔工序 -->
+                    <div class="process-item">
+                        <div class="process-content">
+                            <div class="process-image">
+                                <img src="img/drill.jpg" alt="钻孔图标">
+                            </div>
+                            <div class="process-details">
+                                <div class="process-row">
+                                    <span class="process-name">钻孔</span>
+                                    <button class="toggle-switch" id="customizeDrillingToggle" onclick="toggleCustomizeProcess('drilling')">
+                                        <div class="toggle-slider"></div>
+                                    </button>
+                                </div>
+                                <div class="process-row" id="customizeDrillingTime" style="display: none;">
+                                    <label>钻孔时间</label>
+                                    <div class="input-group">
+                                        <input type="number" class="param-input" min="0" step="0.1" value="5.0" 
+                                               onchange="updateCustomizeParameter('drilling', 'time', this.value)"
+                                               oninput="if(this.value < 0) this.value = 0;">
+                                        <span class="input-unit">s</span>
+                                    </div>
+                                </div>
+                                <div class="process-row" id="customizeDrillingCount" style="display: none;">
+                                    <label>钻孔次数</label>
+                                    <div class="input-group">
+                                        <input type="number" class="param-input" min="1" value="3"
+                                               onchange="updateCustomizeParameter('drilling', 'count', this.value)"
+                                               oninput="if(this.value < 0) this.value = 0;">
+                                        <span class="input-unit">次</span>
+                                    </div>
+                                </div>
+                                <div class="process-row" id="customizeDrillingPriority" style="display: none;">
+                                    <label>优先级</label>
+                                    <input type="number" class="priority-input" min="1" max="4" value="1" 
+                                           onchange="updateCustomizePriority('drilling', this.value)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 装配工序 -->
+                    <div class="process-item">
+                        <div class="process-content">
+                            <div class="process-image">
+                                <img src="img/assemble.jpg" alt="装配图标">
+                            </div>
+                            <div class="process-details">
+                                <div class="process-row">
+                                    <span class="process-name">装配</span>
+                                    <button class="toggle-switch" id="customizeAssemblyToggle" onclick="toggleCustomizeProcess('assembly')">
+                                        <div class="toggle-slider"></div>
+                                    </button>
+                                </div>
+                                <div class="process-row" id="customizeAssemblyTime" style="display: none;">
+                                    <label>装配时间</label>
+                                    <div class="input-group">
+                                        <input type="number" class="param-input" min="0" step="0.1" value="10.0"
+                                               onchange="updateCustomizeParameter('assembly', 'time', this.value)"
+                                               oninput="if(this.value < 0) this.value = 0;">
+                                        <span class="input-unit">s</span>
+                                    </div>
+                                </div>
+                                <div class="process-row" id="customizeAssemblyCount" style="display: none;">
+                                    <label>装配次数</label>
+                                    <div class="input-group">
+                                        <input type="number" class="param-input" min="1" value="1"
+                                               onchange="updateCustomizeParameter('assembly', 'count', this.value)"
+                                               oninput="if(this.value < 0) this.value = 0;">
+                                        <span class="input-unit">次</span>
+                                    </div>
+                                </div>
+                                <div class="process-row" id="customizeAssemblyPriority" style="display: none;">
+                                    <label>优先级</label>
+                                    <input type="number" class="priority-input" min="1" max="4" value="2"
+                                           onchange="updateCustomizePriority('assembly', this.value)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 称重工序 -->
+                    <div class="process-item">
+                        <div class="process-content">
+                            <div class="process-image">
+                                <img src="img/weigh.jpg" alt="称重图标">
+                            </div>
+                            <div class="process-details">
+                                <div class="process-row">
+                                    <span class="process-name">称重</span>
+                                    <button class="toggle-switch" id="customizeWeighingToggle" onclick="toggleCustomizeProcess('weighing')">
+                                        <div class="toggle-slider"></div>
+                                    </button>
+                                </div>
+                                <div class="process-row" id="customizeWeight" style="display: none;">
+                                    <label>设定重量</label>
+                                    <div class="input-group">
+                                        <input type="number" class="param-input" min="0" step="0.1" value="2.0"
+                                               onchange="updateCustomizeParameter('weighing', 'weight', this.value)"
+                                               oninput="if(this.value < 0) this.value = 0;">
+                                        <span class="input-unit">g</span>
+                                    </div>
+                                </div>
+                                <div class="process-row" id="customizeWeighingPriority" style="display: none;">
+                                    <label>优先级</label>
+                                    <input type="number" class="priority-input" min="1" max="4" value="3"
+                                           onchange="updateCustomizePriority('weighing', this.value)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 喷码工序 -->
+                    <div class="process-item">
+                        <div class="process-content">
+                            <div class="process-image">
+                                <img src="img/code.jpg" alt="喷码图标">
+                            </div>
+                            <div class="process-details">
+                                <div class="process-row">
+                                    <div>
+                                        <span class="process-name">喷码</span>
+                                        <span class="process-note" id="customizeCodingNote">需装配工序启用</span>
+                                    </div>
+                                    <button class="toggle-switch disabled" id="customizeCodingToggle" onclick="toggleCustomizeProcess('coding')">
+                                        <div class="toggle-slider"></div>
+                                    </button>
+                                </div>
+                                <div class="process-row" id="customizeCodingTime" style="display: none;">
+                                    <label>喷码时间</label>
+                                    <div class="input-group">
+                                        <input type="number" class="param-input" min="0" step="0.1" value="3.0"
+                                               onchange="updateCustomizeParameter('coding', 'time', this.value)"
+                                               oninput="if(this.value < 0) this.value = 0;">
+                                        <span class="input-unit">s</span>
+                                    </div>
+                                </div>
+                                <div class="process-row" id="customizeCodingCount" style="display: none;">
+                                    <label>喷码次数</label>
+                                    <div class="input-group">
+                                        <input type="number" class="param-input" min="1" value="1"
+                                               onchange="updateCustomizeParameter('coding', 'count', this.value)"
+                                               oninput="if(this.value < 0) this.value = 0;">
+                                        <span class="input-unit">次</span>
+                                    </div>
+                                </div>
+                                <div class="process-row" id="customizeCodingPriority" style="display: none;">
+                                    <label>优先级</label>
+                                    <input type="number" class="priority-input" min="1" max="4" value="4" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 预览工作计划名称 -->
+                <div class="section">
+                    <div class="preview-section">
+                        <h4>定制工作计划预览</h4>
+                        <div class="preview-name" id="customizePreviewName">未配置工序</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="customize-modal-footer">
+                <button class="cancel-btn" onclick="closeCustomizeModal()">取消</button>
+                <button class="save-btn" onclick="confirmCustomize()">
+                    <span>✓</span>
+                    确认定制
+                </button>
             </div>
         </div>
     </div>

@@ -5,19 +5,18 @@ let selectedImage = '';
 let currentPage = 1;
 const pageSize = 10;
 
-// 页面初始化（修复异步问题）
+// 初始化
 async function initializePage() {
     try {
         console.log('🔄 初始化管理页面...');
         
-        // 等待数据加载完成
         products = await initializeData();
         console.log('✅ 数据加载完成:', products.length, '个商品');
         
         renderTable();
     } catch (error) {
         console.error('❌ 页面初始化失败:', error);
-        // 如果初始化失败，尝试从localStorage加载
+        // 如果初始化失败则尝试从localStorage加载
         products = loadProductsFromStorage();
         renderTable();
     }
@@ -52,7 +51,7 @@ function renderTable() {   // 渲染表格
             <td class="col-id">${p.id}</td>
             <td class="col-name">${p.productName}</td>
             <td class="col-price">¥${p.price}</td>
-            <td class="col-plan">${p.workPlan}</td>
+            <td class="col-plan">${p.workPlanID}</td>
             <td class="col-status"><span class="${statusClass}">${statusText}</span></td>
             <td class="col-description">
                 <div class="description-text" title="${p.description || ''}" onclick="showDescriptionModal('${p.productName}', '${(p.description || '').replace(/'/g, '&#39;')}')">${p.description || '-'}</div>
@@ -73,7 +72,7 @@ function renderTable() {   // 渲染表格
     renderPagination();
 }
 
-function renderPagination() {   // 渲染翻页
+function renderPagination() {   // 翻页
     const pagination = document.getElementById('pagination');
     pagination.innerHTML = '';
     const totalPages = Math.ceil(filteredProducts.length / pageSize);
@@ -120,6 +119,7 @@ function openEditModal(i) { // 打开编辑产品模态框
     document.getElementById('productName').value = p.productName;
     document.getElementById('price').value = p.price;
     document.getElementById('workPlan').value = p.workPlan;
+    document.getElementById('workPlanID').value = p.workPlanID;
     document.getElementById('productDescription').value = p.description || '';
     selectedImage = p.image;
     showPreview(selectedImage);
@@ -180,6 +180,7 @@ function saveProduct() {
     const name = document.getElementById('productName').value.trim();
     const price = document.getElementById('price').value;
     const workPlan = document.getElementById('workPlan').value.trim();
+    const workPlanID = document.getElementById('workPlanID').value.trim();
     const description = document.getElementById('productDescription').value.trim();
 
     // 验证必填字段
@@ -199,6 +200,7 @@ function saveProduct() {
         productName: name,
         price: parseFloat(price).toFixed(2),
         workPlan: workPlan,
+        workPlanID: workPlanID,
         description: description,
         status: editIndex > -1 ? products[editIndex].status : false,
         image: selectedImage,
