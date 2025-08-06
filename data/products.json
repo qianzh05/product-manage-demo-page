@@ -3,112 +3,130 @@
     {
       "id": "P001",
       "productName": "智能保温杯",
-      "price": 199.00,
+      "price": 199,
       "workPlan": "第一装配 - 对箍 - 蛋芯\n加热时间：5S\n加热次数：3次\n装配时间：25S\n装配/冷却：1次",
       "workPlanID": "WP001",
-      "status": false,
+      "status": true,
       "image": "https://picsum.photos/200/200?random=1",
       "description": "304不锈钢内胆，智能温控显示，24小时保温。采用先进的温控技术，能够精确显示饮品温度，保温效果持久。",
-      "sales": 1234
+      "sales": 1234,
+      "customFields": {}
     },
     {
       "id": "P002",
       "productName": "无线蓝牙耳机",
-      "price": 299.00,
+      "price": 299,
       "workPlan": "组装外壳 - 安装芯片 - 测试\n测试时间：3S\n测试次数：2次\n组装时间：18S\n质检时间：10S",
       "workPlanID": "WP002",
       "status": true,
       "image": "https://picsum.photos/200/200?random=2",
       "description": "降噪技术，超长续航，高音质立体声。搭载最新蓝牙5.0技术，连接稳定，音质清晰。",
-      "sales": 856
+      "sales": 857,
+      "customFields": {}
     },
     {
       "id": "P003",
       "productName": "便携充电宝",
-      "price": 129.00,
+      "price": 129,
       "workPlan": "电池装配 - 电路连接 - 外壳组装\n充电测试：10S\n电路检测：5次\n组装时间：30S\n安全检测：15S",
       "workPlanID": "WP003",
       "status": true,
       "image": "https://picsum.photos/200/200?random=3",
       "description": "20000mAh大容量，快充技术，轻薄便携。支持多设备同时充电，配备智能安全保护系统。",
-      "sales": 2156
+      "sales": 2156,
+      "customFields": {}
     },
     {
       "id": "P004",
       "productName": "运动手环",
-      "price": 399.00,
+      "price": 399,
       "workPlan": "传感器安装 - 表带装配 - 系统调试\n调试时间：8S\n测试次数：4次\n装配时间：20S\n防水测试：12S",
       "workPlanID": "WP004",
-      "status": false,
+      "status": true,
       "image": "https://picsum.photos/200/200?random=4",
       "description": "心率监测，睡眠分析，50米防水。全天候健康监测，专业运动模式，长续航设计。",
-      "sales": 678
+      "sales": 678,
+      "customFields": {}
     },
     {
       "id": "P005",
       "productName": "无线充电器",
-      "price": 89.00,
+      "price": 89,
       "workPlan": "线圈安装 - 电路调试 - 外壳封装\n功率测试：6S\n兼容测试：3次\n装配时间：15S\n安全检测：8S",
       "workPlanID": "WP005",
       "status": true,
       "image": "https://picsum.photos/200/200?random=5",
       "description": "15W快充，兼容多设备，安全防护。支持iPhone、Android等多种设备，智能识别充电功率。",
-      "sales": 1567
+      "sales": 1567,
+      "customFields": {}
     },
     {
       "id": "P006",
       "productName": "蓝牙音箱",
-      "price": 259.00,
+      "price": 259,
       "workPlan": "喇叭装配 - 电路连接 - 音效调试\n音质测试：12S\n防水测试：2次\n装配时间：35S\n音效调试：20S",
       "workPlanID": "WP006",
       "status": true,
       "image": "https://picsum.photos/200/200?random=6",
       "description": "360度环绕音效，防水防尘，长续航。采用专业音响技术，支持户外使用，音质出众。",
-      "sales": 934
+      "sales": 934,
+      "customFields": {}
     },
     {
       "id": "P007",
       "productName": "智能手表",
-      "price": 599.00,
+      "price": 599,
       "workPlan": "屏幕安装 - 主板装配 - 系统调试\n系统测试：15S\n功能测试：6次\n装配时间：45S\n防水测试：20S",
       "workPlanID": "WP007",
-      "status": true,
+      "status": false,
       "image": "https://picsum.photos/200/200?random=7",
       "description": "全功能智能手表，支持通话、健康监测、支付等功能。大屏显示，长续航，时尚外观。",
-      "sales": 445
+      "sales": 445,
+      "customFields": {}
     },
     {
       "id": "P008",
       "productName": "移动硬盘",
-      "price": 399.00,
+      "price": 399,
       "workPlan": "硬盘封装 - 接口安装 - 数据测试\n传输测试：20S\n稳定性测试：8次\n装配时间：25S\n质检时间：30S",
       "workPlanID": "WP008",
       "status": false,
       "image": "https://picsum.photos/200/200?random=8",
       "description": "1TB大容量移动硬盘，USB3.0高速传输，小巧便携。金属外壳，抗震防摔，数据安全。",
-      "sales": 1123
+      "sales": 1123,
+      "customFields": {}
     },
     {
       "id": "P009",
       "productName": "无线鼠标",
-      "price": 79.00,
+      "price": 79,
       "workPlan": "传感器安装 - 外壳组装 - 功能测试\n精度测试：5S\n连接测试：3次\n装配时间：12S\n质检时间：8S",
       "workPlanID": "WP009",
       "status": false,
       "image": "https://picsum.photos/200/200?random=9",
       "description": "无线办公鼠标，2.4G稳定连接，人体工学设计。高精度传感器，长续航，静音点击。",
-      "sales": 2234
+      "sales": 2234,
+      "customFields": {}
     },
     {
       "id": "P010",
       "productName": "机械键盘",
-      "price": 459.00,
+      "price": 459,
       "workPlan": "轴体安装 - 键帽装配 - 背光调试\n手感测试：10S\n背光测试：4次\n装配时间：40S\n质检时间：25S",
       "workPlanID": "WP010",
       "status": false,
       "image": "https://picsum.photos/200/200?random=10",
       "description": "机械键盘，青轴手感，RGB背光。87键紧凑布局，适合游戏和办公，键程舒适，响应迅速。",
-      "sales": 778
+      "sales": 778,
+      "customFields": {}
     }
-  ]
+  ],
+  "categories": [
+    null
+  ],
+  "exportDate": "2025-08-06T07:55:38.827Z",
+  "totalProducts": 10,
+  "onlineProducts": 6,
+  "dataSource": "localStorage",
+  "note": "此数据包含用户的本地修改（上架状态、销量等）"
 }

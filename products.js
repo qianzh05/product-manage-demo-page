@@ -1,4 +1,3 @@
-// 商品展示页面脚本
 let products = [];
 let currentProduct = null;
 
@@ -35,7 +34,7 @@ let customizePartSelection = {
     right: ''
 };
 
-let customizedWorkPlan = null; // 存储用户定制的工作计划
+let customizedWorkPlan = null; 
 
 // 轮播图相关
 let currentSlideIndex = 0;
@@ -138,29 +137,6 @@ function generateProducts() {
     });
 }
 
-// 根据商品名称获取图标
-function getProductIcon(productName) {
-    const iconMap = {
-        '保温杯': '☕',
-        '蓝牙耳机': '🎧',
-        '耳机': '🎧',
-        '充电宝': '🔋',
-        '手环': '⌚',
-        '手表': '⌚',
-        '充电器': '📱',
-        '音箱': '🔊',
-        '鼠标': '🖱️',
-        '键盘': '⌨️',
-        '硬盘': '💾'
-    };
-    
-    for (let key in iconMap) {
-        if (productName.includes(key)) {
-            return iconMap[key];
-        }
-    }
-    return '📦'; // 默认图标
-}
 
 // 弹窗相关
 function openModal(productId) {
@@ -441,6 +417,11 @@ function confirmCustomize() {
 
     if (customizeProcesses.coding.enabled && !customizeProcesses.assembly.enabled) {
         alert('喷码工序需要装配工序启用后才能启动！');
+        return;
+    }
+
+    if (!customizePartSelection.left || !customizePartSelection.right) {
+        alert('请将两个零件都选择后再完成定制！');
         return;
     }
 
