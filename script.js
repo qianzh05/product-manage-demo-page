@@ -24,7 +24,7 @@ async function initializePage() {
 
 function renderTable() {   // 渲染表格
     const query = document.getElementById('searchInput').value.trim().toLowerCase();
-    filteredProducts = query
+    filteredProducts = query 
         ? products.filter(p =>
                 p.id.toLowerCase().includes(query) ||
                 p.productName.toLowerCase().includes(query)

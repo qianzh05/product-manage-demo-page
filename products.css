@@ -433,6 +433,11 @@ body {
     font-size: 1.1rem;
     background: white;
 }
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
 .modal-actions {
     display: flex;
@@ -810,6 +815,32 @@ body {
 .save-btn:hover {
     transform: translateY(-1px);
     box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+}
+
+.floating-cart-btn {
+    position: fixed;
+    right: 32px;
+    bottom: 32px;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-size: 2.2rem;
+    box-shadow: 0 8px 24px rgba(102,126,234,0.18);
+    border: none;
+    cursor: pointer;
+    z-index: 2000;
+    transition: box-shadow 0.2s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.floating-cart-btn:hover {
+    box-shadow: 0 12px 32px rgba(102,126,234,0.28);
+    transform: scale(1.08);
+    text-decoration: none;
 }
 
 @media (max-width: 768px) {

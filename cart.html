@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navigation">
+            <div class="nav-content">
+                <h2>工业4.0商城</h2>
+                <div class="nav-links">
+                    <a href="products.html" class="nav-link">商品展示</a>
+                    <a href="cart.html" class="nav-link active">购物车</a>
+                    <a href="index.html" class="nav-link">商品管理</a>
+                </div>
+            </div>
+        </nav>
+        <h2 class="section-title">我的购物车</h2>
+        <form id="cartForm">
+            <div class="cart-actions">
+                <label><input type="checkbox" id="selectAll"> 全选</label>
+                <button type="button" id="buySelected" class="cart-btn buy-btn">立即购买</button>
+                <button type="button" id="deleteSelected" class="cart-btn delete-btn">删除选中</button>
+            </div>
+            <div class="cart-list" id="cartList"></div>
+        </form>
+    </div>
+    <!-- 总价栏 -->
+    <div class="cart-total-bar" id="cartTotalBar">
+        <span>总价：</span>
+        <span id="cartTotalPrice">￥0.00</span>
+    </div>
+    <script src="shared.js"></script>
+    <script src="cart.js"></script>
+</body>
+</html>

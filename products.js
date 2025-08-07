@@ -185,21 +185,31 @@ function changeQuantity(delta) {
 // 加入购物车
 function addToCart() {
     if (!currentProduct) return;
-    
     const quantity = parseInt(document.getElementById('quantity').value) || 1;
-    
-    // 显示包含定制信息的提示
+
+    // 读取购物车
+    let cart = JSON.parse(localStorage.getItem('productSystem_cart') || '[]');
+    // 查找是否已存在
+    const idx = cart.findIndex(item => item.id === currentProduct.id);
+    if (idx > -1) {
+        cart[idx].qty += quantity;
+    } else {
+        cart.push({ id: currentProduct.id, qty: quantity });
+    }
+    localStorage.setItem('productSystem_cart', JSON.stringify(cart));
+
+    // 显示提示
     let message = `已将 ${currentProduct.productName} x${quantity} 加入购物车！`;
     if (customizedWorkPlan) {
         message += '\n\n定制工作计划：\n' + customizedWorkPlan;
     }
     alert(message);
-    
+
     // 更新销量
     updateProductSales(currentProduct.id, (currentProduct.sales || 0) + quantity);
-    
+
     closeModal();
-    
+
     // 重新加载商品数据以更新销量显示
     setTimeout(() => {
         loadProducts();
@@ -620,4 +630,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+});
+
+document.getElementById('floatingCartBtn').addEventListener('click', function() {
+    window.location.href = 'cart.html';
 });
